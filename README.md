@@ -18,9 +18,9 @@ Things you need to install
 - Pip
 - virtualenv
 - pillow
-- pypdf2
 - tesseract
 - poppler
+- pypdf2
 - pdf2image [https://pypi.org/project/pdf2image/](https://pypi.org/project/pdf2image/)
 
 You may need to install **poppler** and **tesserect** on your workstation and add them to the PATH Environment.
@@ -77,7 +77,6 @@ You'll need to change path to **poppler** and **tesseract** in **start.py** scri
 
 - input_pdf_here: Add your pdf file here with a .pdf extension
 - output_is_here: This is where the reordered pdf will be saved.
-- temp_folder: A temp folder where jpgs and txt files are temporarily generated.
 - start.py: Our python script.
 
 ### Break down of process
@@ -108,7 +107,7 @@ The script is divided in 3 main sections.
 
 The PDF file is converted into jpgs.
 
-There will be one jpg file per PDF page and they will be generated in the temp_folder.
+temporary jpg and txt files will be generated per pdf page.
 
 You can edit the parameters in **convert_from_path** for more options. More info is available in the **pdf2image** documentation above.
 
@@ -140,7 +139,7 @@ pytesseract.pytesseract.tesseract_cmd = 'C:\\Users\\<username>\\AppData\\Local\\
 
 The script will generate a new PDF with the updated page order.
 
-The script will then delete all txt and jpg files in the temp folder.
+The script will then delete all temporary txt and jpg files.
 
 ## Deployment
 
