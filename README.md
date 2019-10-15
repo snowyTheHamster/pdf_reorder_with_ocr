@@ -4,13 +4,13 @@ Reorder PDF pages using OCR text recognition with Python and Regex.
 
 ## Getting Started
 
-A simplified version of our script to help re-order hundreds of PDF pages for online orders.
+A simplified version of our script to reorder hundreds of PDF pages for our online orders.
 
 This documentation assumes you have Python3 installed along with pip, virtualenv and git.
 
-I'm using regex in this example to match **phone numbers** in each PDF page to reorder the pages.
+I'm using regex (regular expressions) in this example to match **phone numbers** in each PDF page to reorder the pages.
 
-If phone numbers aren't standardized like in this example, results may not be perfect.
+If phone numbers aren't standardized like in this example, results won't be perfect; improvise.
 
 ### Prerequisites
 
@@ -28,7 +28,7 @@ Here are some references for **poppler** and **tesserect**:
 - [support.foxtrotalliance.com...](https://support.foxtrotalliance.com/hc/en-us/articles/360025802252-How-To-Work-With-Poppler-Utility-Library-PDF-Tool)
 - [https://github.com/tesseract-ocr/tesseract/wiki](https://github.com/tesseract-ocr/tesseract/wiki)
 
-Here is the reference for pdf2image:
+Some useful reference for pdf2image:
 - pdf2image [https://pypi.org/project/pdf2image/](https://pypi.org/project/pdf2image/)
 
 As of this writing, I've tested this script using:
@@ -38,7 +38,7 @@ As of this writing, I've tested this script using:
 - poppler-0.68.0_x86
 - tesseract-ocr-w64-setup-v5.0.0-alpha.20191010.exe
 
-You can install the python modules using the **requirements.txt** below.
+You'll install the python modules using the **requirements.txt** example below.
 
 ### Installing
 
@@ -72,11 +72,11 @@ Install the included modules using pip
 pip install -r requirements.txt
 ```
 
-Now edit the full paths of the **poppler** and **tesseract** in the **start.py** file:
-
-More details in **Code Explanation below**
+Now edit the full paths of the **poppler** and **tesseract** in the **start.py** file (details in **Code Explanation** below).
 
 ## Running the tests
+
+I included a **sample.pdf** file.
 
 To test, run:
 
@@ -102,11 +102,11 @@ Results may not be perfect if the **phone numbers** aren't standardized.
 - Reorders the jpgs based on user defined regex match.
 - Generates new PDF with updated page order.
 
-** Some documentation **
+**Some documentation**
 
 - Documentation of [pdf2image](https://pypi.org/project/pdf2image/).
 - Best regex youtube tutorial by Engineer Man: [https://www.youtube.com/watch?v=bgBWp9EIlMM](https://www.youtube.com/watch?v=bgBWp9EIlMM).
-- Raegex tester [https://www.debuggex.com/](https://www.debuggex.com/).
+- Regex tester [https://www.debuggex.com/](https://www.debuggex.com/).
 
 ### Code Explanation
 
@@ -118,7 +118,7 @@ The script is divided in 3 main sections.
 
 The PDF file is converted into jpgs.
 
-temporary jpg and txt files will be generated per pdf page.
+Temporary jpg and txt files will be generated per pdf page.
 
 You can edit the parameters in **convert_from_path** for more options.
 
@@ -126,9 +126,12 @@ More info is available in the **pdf2image** documentation above.
 
 **Note**: You may need to add full path to **poppler** on some work stations:
 
+
 ```
 pages = convert_from_path(PDF_file, 500, poppler_path="C:\\poppler-0.68.0\\bin")
 ```
+
+**Note 2**: Change \ to / on linux and mac.
 
 #### Part #2 : Recognizing text from the images using OCR
 
@@ -147,6 +150,8 @@ Finally, the script will reorder the array using the phone number as an index.
 ```
 pytesseract.pytesseract.tesseract_cmd = 'C:\\Users\\<username>\\AppData\\Local\\Tesseract-OCR\\tesseract.exe'
 ```
+
+**Note 2**: Change \ to / on linux and mac.
 
 #### Part #2 : Recognizing text from the images using OCR
 
