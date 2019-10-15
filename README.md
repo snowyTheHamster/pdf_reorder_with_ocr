@@ -6,9 +6,13 @@ Reorder PDF pages using OCR text recognition with Python and Regex.
 
 This documentation assumes you have Python3 installed along with pip, virtualenv and git.
 
+I'm using regex in this example to match **phone numbers** in each page then re-ordering the pages using these phone numbers in descending order.
+
+If phone numbers aren't standardized like in this example, results may not be perfect.
+
 ### Prerequisites
 
-What things you need to install the software and how to install them
+Things you need to install
 
 - Python 3
 - Pip
@@ -31,7 +35,9 @@ Here are some references for **poppler** and **tesserect**:
 
 A step by step series of examples that tell you how to get a development env running.
 
-First, install **poppler** and **tesseract** on your workstation with reference to docs above.
+Install **poppler** on your workstation.
+
+Install **tesseract** on your workstation.
 
 Next, create a project folder and clone this repo:
 
@@ -71,22 +77,26 @@ You'll need to change path to **poppler** and **tesseract** in **start.py** scri
 
 - input_pdf_here: Add your pdf file here with a .pdf extension
 - output_is_here: This is where the reordered pdf will be saved.
-- temp_folder: a temp folder where jpgs and txt files are temporarily generated.
-- start.py: The python script that does everything.
+- temp_folder: A temp folder where jpgs and txt files are temporarily generated.
+- start.py: Our python script.
 
 ### Break down of process
 
-This example uses **regular expressions** to find **phone numbers** for sorting the pages. Results may not be perfect if the **phone numbers** arn't standardized.
+This example uses **regular expressions** to find **phone numbers** for sorting the pages.
 
-- The script saves PDF order in an array.
-- Converts PDF to jpg.
-- Use OCR to grab text from jpgs.
-- Reorders jpgs based on user defined values.
-- Generates PDF with updated page order.
+Results may not be perfect if the **phone numbers** aren't standardized.
 
-- Documentation of [pdf2image](https://pypi.org/project/pdf2image/)
-- best regex youtube tutorial: [https://www.youtube.com/watch?v=bgBWp9EIlMM](https://www.youtube.com/watch?v=bgBWp9EIlMM)
-- regex tester [https://www.debuggex.com/](https://www.debuggex.com/)
+- The script saves the PDF page order in an array.
+- Converts the PDF file to jpg files.
+- Use OCR to grab text from the jpgs.
+- Reorders the jpgs based on user defined regex match.
+- Generates new PDF with updated page order.
+
+** Some documentation **
+
+- Documentation of [pdf2image](https://pypi.org/project/pdf2image/).
+- Best regex youtube tutorial by Engineer Man: [https://www.youtube.com/watch?v=bgBWp9EIlMM](https://www.youtube.com/watch?v=bgBWp9EIlMM).
+- Raegex tester [https://www.debuggex.com/](https://www.debuggex.com/).
 
 ### Code Explanation
 
@@ -102,7 +112,11 @@ There will be one jpg file per PDF page and they will be generated in the temp_f
 
 You can edit the parameters in **convert_from_path** for more options. More info is available in the **pdf2image** documentation above.
 
-**Note**: You may need to add full path to **poppler** on some work stations.
+**Note**: You may need to add full path to **poppler** on some work stations:
+
+```
+pages = convert_from_path(PDF_file, 500, poppler_path="C:\\poppler-0.68.0\\bin")
+```
 
 #### Part #2 : Recognizing text from the images using OCR
 
@@ -115,6 +129,12 @@ If regex matches a phone number, it'll add it to an array.
 If regex doesn't match a phone number, it'll prepend a large number to it before adding it to the array. 
 
 Finally, the script will reorder the array using the phone number as an index.
+
+**Note**: You may need to add full path to **tesseract** on some work stations:
+
+```
+pytesseract.pytesseract.tesseract_cmd = 'C:\\Users\\<username>\\AppData\\Local\\Tesseract-OCR\\tesseract.exe'
+```
 
 #### Part #2 : Recognizing text from the images using OCR
 
@@ -130,7 +150,7 @@ You can also use Pyinstaller to make executable versions for other workstations 
 
 ## Authors
 
-* **Taku** - *Initial work* - [snowyTheHamster](https://github.com/snowyTheHamster)
+* **Taku** - [snowyTheHamster](https://github.com/snowyTheHamster)
 
 ## License
 
