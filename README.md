@@ -108,13 +108,13 @@ Results may not be perfect if the **phone numbers** aren't standardized.
 - Best regex youtube tutorial by Engineer Man: [https://www.youtube.com/watch?v=bgBWp9EIlMM](https://www.youtube.com/watch?v=bgBWp9EIlMM).
 - Regex tester [https://www.debuggex.com/](https://www.debuggex.com/).
 
-### Code Explanation
+## Code Explanation
 
 To make changes, edit the **start.py** file.
 
 The script is divided in 3 main sections.
  
-#### Part #1 : Converting PDF to images 
+### Part #1 : Converting PDF to images 
 
 The PDF file is converted into jpgs.
 
@@ -131,9 +131,9 @@ More info is available in the **pdf2image** documentation above.
 pages = convert_from_path(PDF_file, 500, poppler_path="C:\\poppler-0.68.0\\bin")
 ```
 
-**Note 2**: Change \ to / on linux and mac.
+**Note 2**: Change \ to / for linux and mac file paths.
 
-#### Part #2 : Recognizing text from the images using OCR
+### Part #2 : Recognizing text from the images using OCR
 
 OCR will extract text from the jpg files to txt files.
 
@@ -151,9 +151,9 @@ Finally, the script will reorder the array using the phone number as an index.
 pytesseract.pytesseract.tesseract_cmd = 'C:\\Users\\<username>\\AppData\\Local\\Tesseract-OCR\\tesseract.exe'
 ```
 
-**Note 2**: Change \ to / on linux and mac.
+**Note 2**: Change \ to / for linux and mac file paths.
 
-#### Part #3 : Recognizing text from the images using OCR
+### Part #3 : Recognizing text from the images using OCR
 
 The script will generate a new PDF with the updated page order.
 
