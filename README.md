@@ -4,26 +4,23 @@ Reorder PDF pages using OCR text recognition with Python and Regex.
 
 ## Getting Started
 
+A simplified version of our script to help re-order hundreds of PDF pages for online orders.
+
 This documentation assumes you have Python3 installed along with pip, virtualenv and git.
 
-I'm using regex in this example to match **phone numbers** in each page then re-ordering the pages using these phone numbers in descending order.
+I'm using regex in this example to match **phone numbers** in each PDF page to reorder the pages.
 
 If phone numbers aren't standardized like in this example, results may not be perfect.
 
 ### Prerequisites
 
-Things you need to install
+Things you need to install on your workstation
 
-- Python 3
-- Pip
+- python 3
+- pip
 - virtualenv
-- pillow
 - tesseract
 - poppler
-- pypdf2
-- pdf2image [https://pypi.org/project/pdf2image/](https://pypi.org/project/pdf2image/)
-
-You may need to install **poppler** and **tesserect** on your workstation and add them to the PATH Environment.
 
 Here are some references for **poppler** and **tesserect**:
 
@@ -31,13 +28,27 @@ Here are some references for **poppler** and **tesserect**:
 - [support.foxtrotalliance.com...](https://support.foxtrotalliance.com/hc/en-us/articles/360025802252-How-To-Work-With-Poppler-Utility-Library-PDF-Tool)
 - [https://github.com/tesseract-ocr/tesseract/wiki](https://github.com/tesseract-ocr/tesseract/wiki)
 
+Here is the reference for pdf2image:
+- pdf2image [https://pypi.org/project/pdf2image/](https://pypi.org/project/pdf2image/)
+
+As of this writing, I've tested this script using:
+
+- Windows 10 Pro
+- Python 3.7.4
+- poppler-0.68.0_x86
+- tesseract-ocr-w64-setup-v5.0.0-alpha.20191010.exe
+
+You can install the python modules using the **requirements.txt** below.
+
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running.
+A step by step guide to set up a development environment.
 
-Install **poppler** on your workstation.
+- Install **poppler** on your workstation.
 
-Install **tesseract** on your workstation.
+- Install **tesseract** on your workstation.
+
+- Add them both to the PATH Environment.
 
 Next, create a project folder and clone this repo:
 
@@ -61,7 +72,9 @@ Install the included modules using pip
 pip install -r requirements.txt
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
+Now edit the full paths of the **poppler** and **tesseract** in the **start.py** file:
+
+More details in **Code Explanation below**
 
 ## Running the tests
 
@@ -70,8 +83,6 @@ To test, run:
 ```
 python start.py
 ```
-
-You'll need to change path to **poppler** and **tesseract** in **start.py** script to match your workstation.
 
 ### Project Structure
 
@@ -109,7 +120,9 @@ The PDF file is converted into jpgs.
 
 temporary jpg and txt files will be generated per pdf page.
 
-You can edit the parameters in **convert_from_path** for more options. More info is available in the **pdf2image** documentation above.
+You can edit the parameters in **convert_from_path** for more options.
+
+More info is available in the **pdf2image** documentation above.
 
 **Note**: You may need to add full path to **poppler** on some work stations:
 
