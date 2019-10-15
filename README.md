@@ -153,7 +153,7 @@ pytesseract.pytesseract.tesseract_cmd = 'C:\\Users\\<username>\\AppData\\Local\\
 
 **Note 2**: Change \ to / on linux and mac.
 
-#### Part #2 : Recognizing text from the images using OCR
+#### Part #3 : Recognizing text from the images using OCR
 
 The script will generate a new PDF with the updated page order.
 
